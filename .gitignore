@@ -12,6 +12,8 @@ yarn-error.log*
 # Build output
 dist/
 build/
+# Allow shared/element.min.js but ignore other minified files
+!shared/element.min.js
 *.min.js
 
 # IDE files
