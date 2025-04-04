@@ -1,0 +1,30 @@
+.cursor-trail-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+    pointer-events: none; /* Allow clicks to pass through */
+    z-index: 9999; /* Ensure particles appear above other content */
+    overflow: visible;
+}
+
+.cursor-trail-particle {
+    position: fixed; /* Use fixed positioning to ensure proper placement */
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.9);
+    transform-origin: center center;
+    pointer-events: none;
+    will-change: transform, opacity; /* Optimize for animations */
+    filter: 
+        drop-shadow(0 0 8px var(--main-blue))
+        drop-shadow(0 0 8px var(--main-green))
+        drop-shadow(0 0 8px var(--main-red));
+    /* Create a teardrop shape for directional effect */
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    z-index: 10000; /* Ensure particles are on top */
+}

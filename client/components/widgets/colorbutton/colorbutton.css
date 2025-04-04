@@ -1,0 +1,54 @@
+.colorbutton-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 0;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.colorbutton {
+    background-color: #4CAF50;
+    border: none;
+    color: white !important;
+    padding: 12px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px 0;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.3s;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.colorbutton:hover {
+    background-color: #45a049;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.colorbutton:active {
+    background-color: #3e8e41;
+    transform: translateY(0);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+.colorbutton-target {
+    margin-top: 15px;
+    padding: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    transition: color 0.3s ease;
+    border-top: 1px solid #eee;
+    width: 100%;
+    text-align: center;
+}
+
+/* Override any other styles */
+.weather h1 {
+    transition: color 0.3s ease !important;
+}
