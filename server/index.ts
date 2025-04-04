@@ -1,5 +1,5 @@
 import type { ServerContext } from "../../common/server/lib/jsphere.d.ts";
-import { renderDocument$ } from "../shared/element.min.js";
+import { renderDocument$ } from "../shared/element.js";
 import "../shared/dependencies.js";
 
 export async function onGET (ctx:ServerContext) : Promise<Response> {
