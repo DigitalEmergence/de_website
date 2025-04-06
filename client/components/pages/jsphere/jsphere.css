@@ -54,6 +54,16 @@
     transition: transform 0.05s linear;
 }
 
+.jsphere_body {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
 .hero_section {
     position: relative;
     height: 100vh;
@@ -105,10 +115,13 @@
 
 @keyframes hueShift {
     0% {
-        filter: hue-rotate(0deg);
+        filter: hue-rotate(0deg) grayscale(0%);
+    }
+    50% {
+        filter: hue-rotate(180deg) grayscale(70%);
     }
     100% {
-        filter: hue-rotate(360deg);
+        filter: hue-rotate(360deg) grayscale(0%);
     }
 }
 
@@ -313,13 +326,16 @@
 
 /* Footer Styles */
 .footer_section {
-    min-height: 30vh;
+    border-top: 1px solid rgba(98, 98, 98, 0.3);
+    min-height: 20vh;
     width: 100%;
-    background-color: var(--dark-gray);
+    background-color: transparent;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 2rem 0;
+    color: white;
+    opacity: 0.5;
 }
 
 /* Base styles for footer sections */
@@ -339,6 +355,8 @@
 
 .footer_middle_section p {
     font-size: 10px;
+    color: white;
+    opacity: 0.5;
 }
 
 .footer_right_section {
@@ -364,8 +382,8 @@
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background-color: var(--dark-gray);
-    color: black;
+    background-color: transparent;
+    color: white;
     text-decoration: none;
     transition: all 0.3s ease;
 }
@@ -436,6 +454,10 @@
 }
 
 @media (max-width: 480px) {
+
+    .hero_background{
+        width: 400%;
+    }
 
     .hero_jsphere {
         font-size: 3rem;

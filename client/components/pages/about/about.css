@@ -54,6 +54,16 @@
     transition: transform 0.05s linear;
 }
 
+.about_body {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
 .hero_section {
     position: relative;
     height: 100vh;
@@ -72,9 +82,9 @@
 
 .hero_background {
     position: absolute;
-    width: 150%;
+    width: 200%;
     aspect-ratio: 1/1;
-    background-image: url('../../../assets/images/about_bg-2-min.png');
+    background-image: url('../../../assets/images/about_take5-min.png');
     background-size: 100% 100%;
     background-position: center;
     background-repeat: no-repeat;
@@ -106,10 +116,13 @@
 
 @keyframes hueShift {
     0% {
-        filter: hue-rotate(0deg);
+        filter: hue-rotate(0deg) grayscale(0%);
+    }
+    50% {
+        filter: hue-rotate(180deg) grayscale(70%);
     }
     100% {
-        filter: hue-rotate(360deg);
+        filter: hue-rotate(360deg) grayscale(0%);
     }
 }
 
@@ -128,11 +141,21 @@
 .hero_content {
     display: flex;
     flex-direction: column;
+    width: 100%;
+    min-height: 80vh;
+}
+
+.hero_section_2 {
+    border-top: 2px solid rgba(255, 255, 255, 0.1);
+    width: 100%;
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 90vh;
-    gap: 1rem;
 }
+
+
 
 .hero_jsphere {
     font-size: 10rem;
@@ -326,9 +349,12 @@
 
 /* Footer Styles */
 .footer_section {
-    min-height: 30vh;
+    border-top: 1px solid rgba(98, 98, 98, 0.3);
+    min-height: 20vh;
     width: 100%;
-    background-color: var(--dark-gray);
+    background-color: transparent;
+    color: white;
+    opacity: 0.5;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -377,8 +403,9 @@
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background-color: var(--dark-gray);
-    color: black;
+    background-color: white;
+    background-color: transparent;
+    color: white;
     text-decoration: none;
     transition: all 0.3s ease;
 }
@@ -407,8 +434,8 @@
 }
 
 @media (max-width: 1100px) {
-    .hero_jsphere {
-        font-size: 7rem;
+    .hero_background {
+        width: 300%;
     }
 
     .footer_content {
@@ -420,11 +447,7 @@
 }
 
 @media (max-width: 768px) {
-    .hero_jsphere {
-        font-size: 5rem;
-    }
-
-    .hero_background{
+    .hero_background {
         width: 300%;
     }
 
@@ -439,19 +462,14 @@
         justify-content: center;
     }
     
-    /* .de_title h2 {
-        font-size: 1.5rem;
-    } */
-    
     .de_title p {
         font-size: 0.9rem;
     }
 }
 
 @media (max-width: 480px) {
-
-    .hero_jsphere {
-        font-size: 3rem;
+    .hero_background {
+        width: 400%;
     }
 
     .footer_content {

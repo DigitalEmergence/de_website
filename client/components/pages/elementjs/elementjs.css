@@ -54,6 +54,16 @@
     transition: transform 0.05s linear;
 }
 
+.elementjs_body {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
 .hero_section {
     position: relative;
     height: 100vh;
@@ -106,10 +116,13 @@
 
 @keyframes hueShift {
     0% {
-        filter: hue-rotate(0deg);
+        filter: hue-rotate(0deg) grayscale(0%);
+    }
+    50% {
+        filter: hue-rotate(180deg) grayscale(70%);
     }
     100% {
-        filter: hue-rotate(360deg);
+        filter: hue-rotate(360deg) grayscale(0%);
     }
 }
 
@@ -309,9 +322,12 @@
 
 /* Footer Styles */
 .footer_section {
-    min-height: 30vh;
+    border-top: 1px solid rgba(98, 98, 98, 0.3);
+    min-height: 20vh;
     width: 100%;
-    background-color: var(--dark-gray);
+    background-color: transparent;
+    color: white;
+    opacity: 0.5;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -360,8 +376,8 @@
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background-color: var(--dark-gray);
-    color: black;
+    background-color: transparent;
+    color: white;
     text-decoration: none;
     transition: all 0.3s ease;
 }
@@ -390,9 +406,10 @@
 }
 
 @media (max-width: 1100px) {
-    .hero_background{
-        width: 400%;
+    .hero_background {
+        width: 300%;
     }
+
     .footer_content {
         grid-template-columns: 1fr 1fr;
         grid-template-areas: 
@@ -402,7 +419,9 @@
 }
 
 @media (max-width: 768px) {
-
+    .hero_background {
+        width: 300%;
+    }
 
     .footer_left_section {
         justify-content: left;
@@ -415,16 +434,16 @@
         justify-content: center;
     }
     
-    /* .de_title h2 {
-        font-size: 1.5rem;
-    } */
-    
     .de_title p {
         font-size: 0.9rem;
     }
 }
 
 @media (max-width: 480px) {
+    .hero_background {
+        width: 500%;
+    }
+
     .footer_content {
         grid-template-columns: 1fr;
         grid-template-areas: 

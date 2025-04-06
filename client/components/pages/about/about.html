@@ -12,77 +12,83 @@
             await renderDocument$();
         </script>
     </head>
-    <body el-id="jspherepage" el-is="jspherepage">
+    <body el-id="aboutpage" el-is="aboutpage">
         <!-- <div id="page-overlay" class="page-overlay">
             <video id="overlay-video" class="overlay-video" muted playsinline>
                 <source src="/de_website/client/assets/videos/Digital_Emergence_Base.mp4" type="video/mp4">
             </video>
         </div> -->
         <div id="cursor-trail-container" class="cursor-trail-container"></div>
-        <section class="hero_section">
+        <div class="about_body">
             <div class="hero_background"></div>
-            <div class="navbar_section">
-                <div class="nav_content">
-                    <div class="nav_left_section">
-                        <div class="de_logo">
-                            <a href="home"><img src="/de_website/client/assets/images/de_logo_no_bg.PNG" alt="Digital Emergence Logo"></a>
+            <div class="hero_section">
+                <div class="navbar_section">
+                    <div class="nav_content">
+                        <div class="nav_left_section">
+                            <div class="de_logo">
+                                <a href="home"><img src="/de_website/client/assets/images/de_logo_no_bg.PNG" alt="Digital Emergence Logo"></a>
+                            </div>
+                        </div>
+                        <div class="nav_right_section">
+                            <div class="nav_links desktop_nav">
+                                <a class="nav_link" href="jsphere">JSphere</a>
+                                <a class="nav_link" href="elementjs">elementJS</a>
+                                <a class="nav_link" href="services">Services</a>
+                                <a class="nav_link">About</a>
+                            </div>
+                            <button class="hamburger_menu" aria-label="Toggle menu">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </button>
                         </div>
                     </div>
-                    <div class="nav_right_section">
-                        <div class="nav_links desktop_nav">
+                </div>
+                <div class="mobile_menu_overlay">
+                    <div class="mobile_menu_content">
+                        <!-- <button class="close_menu" aria-label="Close menu">×</button> -->
+                        <div class="mobile_nav_links">
                             <a class="nav_link" href="jsphere">JSphere</a>
                             <a class="nav_link" href="elementjs">elementJS</a>
-                            <a class="nav_link">Services</a>
+                            <a class="nav_link" href="services">Services</a>
                             <a class="nav_link">About</a>
                         </div>
-                        <button class="hamburger_menu" aria-label="Toggle menu">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </button>
                     </div>
                 </div>
-            </div>
-            <div class="mobile_menu_overlay">
-                <div class="mobile_menu_content">
-                    <!-- <button class="close_menu" aria-label="Close menu">×</button> -->
-                    <div class="mobile_nav_links">
-                        <a class="nav_link" href="jsphere">JSphere</a>
-                        <a class="nav_link" href="elementjs">elementJS</a>
-                        <a class="nav_link">Services</a>
-                        <a class="nav_link">About</a>
-                    </div>
-                </div>
-            </div>
-            <div class="section_content">
-                <div class="hero_content">
-                    <div class="hero_jsphere">Emergence</div>
-                    <h3 class="hero_title"></h3>
-                </div>
-            </div>
-        </section>
-        <section class="footer_section">
-            <div class="section_content">
-                <div class="footer_content">
-                    <div class="footer_left_section">
-                        <div class="de_title">
-                            <h2>Digital<br>Emergence</h2>
-                            <p>Where the Future Becomes.</p>
+                <div class="section_content">
+                    <div class="hero_content">
+                        <div class="hero_section_1">
+                            <div><p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sit doloremque ut cumque necessitatibus maxime! Consequuntur ab perferendis, rem quam maiores, quo ratione quae similique error vel laboriosam autem, laborum dolorum!</p></div>
                         </div>
-                    </div>
-                    <div class="footer_middle_section">
-                        <p class="copyright_text">Copyright © 2025 Digital Emergence. All rights reserved.</p>
-                    </div>
-                    <div class="footer_right_section">
-                        <div class="footer_links">
-                            <a href="" class="social_icon instgram_icon"><i class="fab fa-instagram"></i></a>
-                            <a href="" class="social_icon twitter_icon"><i class="fab fa-twitter"></i></a>
-                            <a href="" class="social_icon linkedin_icon"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="" class="social_icon youtube_icon"><i class="fab fa-youtube"></i></a>
+                        <div class="hero_section_2">
+                            <div class="hero_title"><h2>Where the Future Becomes</h2></div>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+            <div class="footer_section">
+                <div class="section_content">
+                    <div class="footer_content">
+                        <div class="footer_left_section">
+                            <div class="de_title">
+                                <h2>Digital<br>Emergence</h2>
+                                <p>Where the Future Becomes.</p>
+                            </div>
+                        </div>
+                        <div class="footer_middle_section">
+                            <p class="copyright_text">Copyright © 2025 Digital Emergence. All rights reserved.</p>
+                        </div>
+                        <div class="footer_right_section">
+                            <div class="footer_links">
+                                <a href="" class="social_icon instgram_icon"><i class="fab fa-instagram"></i></a>
+                                <a href="" class="social_icon twitter_icon"><i class="fab fa-twitter"></i></a>
+                                <a href="" class="social_icon linkedin_icon"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="" class="social_icon youtube_icon"><i class="fab fa-youtube"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </body>
 </html>
