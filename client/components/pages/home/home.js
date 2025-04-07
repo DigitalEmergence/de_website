@@ -13,7 +13,7 @@ createComponent$('homepage', (el) => {
         onInit$: async () => {
             // Initialize state
             el.state$.cursorTrail = {
-                isActive: false
+                isActive: true
             };
             el.state$.overlay = {
                 isActive: true
@@ -21,12 +21,76 @@ createComponent$('homepage', (el) => {
             el.state$.mobileMenu = {
                 isOpen: false
             };
+            el.state$.contact = {
+                isFormVisible: false
+            };
         },
         onRender$: async () => {
             // Nothing to do for server-side rendering
         },
         onHydrate$: async () => {
             try {
+                console.log('Initializing contact form...');
+                // Initialize contact form
+                const contactButton = el.querySelector('.contact_button');
+                const contactContent = el.querySelector('.contact_content');
+                const contactForm = el.querySelector('.contact_form');
+                const closeFormButton = el.querySelector('.close_form');
+
+                if (!contactButton || !contactContent || !contactForm || !closeFormButton) {
+                    throw new Error('Contact form elements not found');
+                }
+
+                // Function to show form
+                const showForm = () => {
+                    console.log('Showing contact form');
+                    el.state$.contact.isFormVisible = true;
+                    contactContent.classList.add('hidden');
+                    contactForm.classList.remove('hidden');
+                };
+
+                // Function to hide form
+                const hideForm = () => {
+                    console.log('Hiding contact form');
+                    el.state$.contact.isFormVisible = false;
+                    contactForm.classList.add('hidden');
+                    contactContent.classList.remove('hidden');
+                };
+
+                // Contact button click handler
+                contactButton.addEventListener('click', showForm);
+
+                // Close button click handler
+                closeFormButton.addEventListener('click', hideForm);
+
+                // Form submission handler
+                contactForm.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    console.log('Form submitted');
+                    const formData = new FormData(contactForm);
+                    
+                    // Here you would typically send the form data to your backend
+                    console.log('Form data:', {
+                        name: formData.get('name'),
+                        email: formData.get('email'),
+                        message: formData.get('message')
+                    });
+
+                    // Show success message
+                    const submitButton = contactForm.querySelector('.submit_button');
+                    const originalText = submitButton.textContent;
+                    submitButton.textContent = 'Message Sent!';
+                    submitButton.style.backgroundColor = '#4CAF50';
+                    
+                    setTimeout(() => {
+                        // Reset form
+                        contactForm.reset();
+                        submitButton.textContent = originalText;
+                        submitButton.style.backgroundColor = '';
+                        hideForm();
+                    }, 2000);
+                });
+
                 // Initialize video overlay
                 const overlay = document.getElementById('page-overlay');
                 const video = document.getElementById('overlay-video');
@@ -97,6 +161,7 @@ createComponent$('homepage', (el) => {
                         });
                     });
                 }
+
 
                 // Initialize cursor trail after a small delay to ensure DOM is ready
                 setTimeout(() => {

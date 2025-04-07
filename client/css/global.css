@@ -7,10 +7,45 @@
     --light-purple: #DACFE0;
 }
 
+.color_shift {
+    display: inline-block;
+    animation: hueShiftText 5s linear infinite;
+    background: linear-gradient(45deg, #4e5ff8, #6cf875, #f15e5e);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+@keyframes hueShiftText {
+    0% {
+        filter: hue-rotate(0deg) grayscale(1);
+    }
+    50% {
+        filter: hue-rotate(360deg) grayscale(0);
+    }
+    100% {
+        filter: hue-rotate(0deg) grayscale(1);
+    }
+}
+
 @font-face {
     font-family: 'CustomFont';
     src: url('../assets/fonts/font.ttf') format('truetype');
-    font-weight: normal;
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'CustomFont';
+    src: url('../assets/fonts/lemon_milk_light.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'CustomFont';
+    src: url('../assets/fonts/lemon_milk_thick.woff') format('woff');
+    font-weight: 600;
     font-style: normal;
 }
 
@@ -25,6 +60,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'CustomFont', Arial, sans-serif;
+    background-color: black;
 }
 
 a {
@@ -70,6 +106,72 @@ h3 {
 }
 
 
+.product_title {
+    font-size: 8rem;
+    font-weight: 600;
+}
+
+.gradient-button {
+    position: relative;
+    font-size: 1rem;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.717);
+    cursor: pointer;
+    background: linear-gradient(45deg, 
+        rgba(87, 96, 180, 0),  /* --main-blue */
+        rgba(133, 166, 135, 0),  /* --main-green */
+        rgba(207, 168, 168, 0)  /* --main-red */
+    );
+    transition: all 0.3s ease, background 0.3s ease;
+}
+
+.gradient-button:hover {
+    transform: translateY(-3px);
+    background: linear-gradient(45deg, 
+        rgba(87, 96, 180, 1),  /* --main-blue */
+        rgba(133, 166, 135, 1),  /* --main-green */
+        rgba(207, 168, 168, 1)  /* --main-red */
+    );
+    animation: hueShift 1s linear infinite;
+    filter: brightness(1.5);
+    filter: 
+        drop-shadow(0 8px 10px var(--main-blue))
+        drop-shadow(8px 8px 10px var(--main-green))
+        drop-shadow(-8px 8px 10px var(--main-red));
+}
+
+
+
+@media (max-width: 768px) {
+    .section_content {
+        margin: 0 1rem 0 1rem;
+    }    
+
+    .nav_content {
+        margin: 0 1rem 0 1rem;
+    }           
+
+    h1 {
+        font-size: 2.5rem;
+    }
+    
+    h2 {
+        font-size: 2rem;
+    }
+    
+    h3 {
+        font-size: 1.5rem;
+    }
+
+    .product_title {
+        font-size: 7rem;
+    }
+    
+}
+
+
 @media (max-width: 425px) {
     .section_content {
         margin: 0 1rem 0 1rem;
@@ -89,5 +191,9 @@ h3 {
     
     h3 {
         font-size: 1rem;
+    }
+
+    .product_title {
+        font-size: 5rem;
     }
 }

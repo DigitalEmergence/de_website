@@ -66,27 +66,25 @@
 
 .hero_section {
     position: relative;
-    height: 100vh;
     width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     overflow: hidden;
+    isolation: isolate;
 }
 
 .sphere_js {
-    color: var(--main-blue);
     mix-blend-mode: screen;
 }
 
 .hero_background {
     position: absolute;
     width: 200%;
-    aspect-ratio: 1/1;
+    height: 200%;
     background-image: url('../../../assets/images/JSphere_bg.png');
     background-size: 100% 100%;
-    background-position: center;
+    background-position: center bottom;
     background-repeat: no-repeat;
     transform-origin: center center;
     animation: 
@@ -128,20 +126,126 @@
 .hero_content {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    height: 90vh;
-    gap: 1rem;
+    min-height: 90vh;
+    height: 100%;
+    max-width: 1000px;
+    width: 100%;
+    gap: 5rem;
+    color: white;
+    text-align: center;
+    padding: 7rem 2rem 2rem 2rem;
+    box-sizing: border-box;
 }
 
-.hero_jsphere {
-    font-size: 10rem;
+.section_heading {
+    color: white;
+    font-size: 2rem;
+    letter-spacing: 1.5px;
+    margin: 0;
+    text-align: center;
+    position: relative;
 }
+
+.section_heading::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--main-blue), var(--main-green));
+}
+
+
 
 .hero_title {
     text-align: center;
     color: white;
     letter-spacing: 1.9px;
+    font-size: 2.5rem;
+    margin: 0;
+}
+
+.hero_introduction {
+    max-width: 800px;
+    text-align: center;
+}
+
+.hero_introduction p {
+    color: white;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.offering_container {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 3rem;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.offering_container:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-5px);
+}
+
+.offering_points {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.point_item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    text-align: center;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.point_item:hover {
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateY(-3px);
+}
+
+.point_item i {
+    font-size: 2rem;
+    color: var(--main-green);
+    margin-bottom: 1rem;
+}
+
+.point_item h4 {
+    color: white;
+    margin: 0;
+    font-size: 1.4rem;
+    letter-spacing: 1px;
+}
+
+.point_item p {
+    margin: 0;
+    font-size: 1.1rem;
+    line-height: 1.4;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Adjust licensing section to use 2 columns */
+.offering_container:last-of-type .offering_points {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 
@@ -412,8 +516,25 @@
 }
 
 @media (max-width: 1100px) {
+    .hero_content {
+        max-width: 800px;
+        gap: 4rem;
+    }
+
     .hero_jsphere {
         font-size: 7rem;
+    }
+
+    .offering_points {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .section_heading {
+        font-size: 1.8rem;
+    }
+
+    .offering_container {
+        padding: 2rem;
     }
 
     .footer_content {
@@ -425,12 +546,52 @@
 }
 
 @media (max-width: 768px) {
+    .hero_content {
+        max-width: 100%;
+        padding: 5rem 1rem 1rem 1rem;
+        gap: 3rem;
+    }
+
+    .section_heading {
+        font-size: 1.6rem;
+    }
+
     .hero_jsphere {
         font-size: 5rem;
     }
 
     .hero_background{
         width: 300%;
+    }
+
+    .hero_introduction p {
+        font-size: 1rem;
+    }
+
+    .offering_points,
+    .offering_container:last-of-type .offering_points {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .offering_container {
+        padding: 1.5rem;
+    }
+
+    .point_item {
+        padding: 1rem;
+    }
+
+    .point_item i {
+        font-size: 1.8rem;
+    }
+
+    .point_item h4 {
+        font-size: 1.2rem;
+    }
+
+    .point_item p {
+        font-size: 1rem;
     }
 
     .footer_left_section {
@@ -454,6 +615,14 @@
 }
 
 @media (max-width: 480px) {
+    .hero_content {
+        gap: 2rem;
+        padding: 3rem 1rem 1rem 1rem;
+    }
+
+    .section_heading {
+        font-size: 1.4rem;
+    }
 
     .hero_background{
         width: 400%;
@@ -461,6 +630,35 @@
 
     .hero_jsphere {
         font-size: 3rem;
+    }
+
+    .hero_title {
+        font-size: 1.8rem;
+    }
+
+    .hero_introduction p {
+        font-size: 0.9rem;
+    }
+
+    .offering_container {
+        padding: 1.2rem;
+    }
+
+    .point_item {
+        padding: 0.8rem;
+    }
+
+    .point_item i {
+        font-size: 1.6rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .point_item h4 {
+        font-size: 1.1rem;
+    }
+
+    .point_item p {
+        font-size: 0.9rem;
     }
 
     .footer_content {
