@@ -148,13 +148,6 @@
     box-sizing: border-box;
 }
 
-.product_title {
-    font-size: 4rem;
-    margin: 0;
-    letter-spacing: 1.9px;
-    text-align: center;
-}
-
 .offerings_section {
     display: flex;
     flex-direction: column;
@@ -168,6 +161,7 @@
     border: 1px solid rgba(255, 255, 255, 0.1);
     padding: 3rem;
     transition: all 0.3s ease;
+    text-align: center;
 }
 
 .offering_container:hover {
@@ -180,7 +174,6 @@
     font-size: 1.2rem;
     line-height: 1.6;
     margin: 2rem 0;
-    max-width: 800px;
 }
 
 .offering_points {
@@ -480,10 +473,6 @@
 
 @media (max-width: 1100px) {
 
-    .product_title {
-        font-size: 3.5rem;
-    }
-
     .offering_points {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -493,10 +482,6 @@
     .hero_content {
         padding: 5rem 1rem 1rem 1rem;
         gap: 3rem;
-    }
-
-    .product_title {
-        font-size: 3rem;
     }
 
     .offering_container {
@@ -548,10 +533,6 @@
     .hero_content {
         gap: 2rem;
         padding: 3rem 1rem 1rem 1rem;
-    }
-
-    .product_title {
-        font-size: 2.5rem;
     }
 
     .offering_container {

@@ -134,13 +134,6 @@
     box-sizing: border-box;
 }
 
-.product_title {
-    font-size: 4rem;
-    margin: 0;
-    letter-spacing: 1.9px;
-    text-align: center;
-}
-
 .section_heading {
     color: white;
     font-size: 2rem;
@@ -162,7 +155,6 @@
 }
 
 .about_content {
-    max-width: 800px;
     text-align: center;
     margin-bottom: 2rem;
 }
@@ -178,7 +170,6 @@
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 8px;
     padding: 3rem;
     transition: all 0.3s ease;
     width: 100%;
@@ -215,7 +206,6 @@
     text-align: center;
     padding: 2rem;
     background: rgba(255, 255, 255, 0.03);
-    border-radius: 8px;
     transition: all 0.3s ease;
 }
 
@@ -266,7 +256,6 @@
     text-align: center;
     padding: 2rem;
     background: rgba(255, 255, 255, 0.03);
-    border-radius: 8px;
     transition: all 0.3s ease;
 }
 
@@ -279,6 +268,13 @@
     font-size: 2rem;
     color: var(--main-green);
     margin-bottom: 1rem;
+}
+
+.point_item img {
+    width: 5rem;
+    height: 5rem;
+    margin-bottom: 1rem;
+    object-fit: contain;
 }
 
 .point_item h4 {
@@ -562,9 +558,6 @@
 }
 
 @media (max-width: 1100px) {
-    .product_title {
-        font-size: 3.5rem;
-    }
 
     .hero_background {
         width: 300%;
@@ -672,10 +665,6 @@
     .hero_content {
         gap: 2rem;
         padding: 3rem 1rem 1rem 1rem;
-    }
-
-    .product_title {
-        font-size: 2.5rem;
     }
 
     .section_heading {
