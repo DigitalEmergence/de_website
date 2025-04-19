@@ -1,0 +1,62 @@
+# File: .github/workflows/ci.yml
+name: Deno CI Pipeline
+
+on:
+  push:
+    branches:
+      - dev
+      - qa
+      - staging
+      - main
+  pull_request:
+    branches:
+      - dev
+      - qa
+      - staging
+      - main
+
+jobs:
+  ci:
+    name: CI Checks (${{ github.ref_name }})
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Checkout your code
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # 2. Install Deno
+      - name: Setup Deno
+        uses: denoland/setup-deno@v1
+        with:
+          deno-version: 'latest'
+
+      # 3. Cache dependencies
+      - name: Cache Deno modules
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/deno
+          key: ${{ runner.os }}-deno-${{ hashFiles('**/*.ts', '**/*.js', 'deno.json', 'import_map.json') }}
+
+      # 4. Formatting check
+      - name: Check formatting
+        run: deno fmt --check
+
+      # 5. Lint for errors
+      - name: Lint code
+        run: deno lint
+
+      # 6. Run unit & integration tests
+      - name: Run tests
+        run: deno test --fail-fast
+
+      # 7. (Optional) Generate coverage
+      - name: Generate coverage report
+        run: deno coverage --output=lcov
+
+      # 8. (Optional) Upload coverage artifact
+      - name: Upload coverage artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: coverage-report
+          path: coverage/
