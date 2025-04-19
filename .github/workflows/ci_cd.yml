@@ -1,0 +1,82 @@
+# File: .github/workflows/ci-and-loadproject.yml
+name: Deno CI & Remote LoadProject
+
+on:
+  push:
+    branches:
+      - dev
+      - qa
+      - staging
+      - main
+  pull_request:
+    branches:
+      - dev
+      - qa
+      - staging
+      - main
+
+env:
+  PROJECT_NAME: "autobots"
+
+jobs:
+  ci:
+    name: Deno CI Checks (${{ github.ref_name }})
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Deno
+        uses: denoland/setup-deno@v1
+        with:
+          deno-version: 'v2.x'
+
+      - name: Cache Deno modules
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/deno
+          key: ${{ runner.os }}-deno-${{ hashFiles('**/*.ts', '**/*.js', 'deno.json') }}
+          restore-keys: |
+            ${{ runner.os }}-deno-
+
+      - name: Check formatting
+        run: deno fmt --check
+
+      - name: Lint code
+        run: deno lint
+
+      - name: Run tests
+        run: deno test --fail-fast
+
+      - name: CodeQL security scan
+        uses: github/codeql-action/analyze@v2
+
+  loadproject:
+    name: Remote LoadProject on JSphere
+    needs: ci
+    runs-on: ubuntu-latest
+    if: |
+      github.event_name == 'push' &&
+      (github.ref_name == 'qa' || github.ref_name == 'staging')
+    strategy:
+      matrix:
+        include:
+          - env: qa
+            url: ${{ secrets.QA_INSTANCE_URL }}
+          - env: staging
+            url: ${{ secrets.STAGING_INSTANCE_URL }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install JSphere CLI
+        run: |
+          # TODO: replace with your real install command
+          echo "Installing JSphere CLI..."
+
+      - name: Load project on ${{ matrix.env }}
+        if: ${{ github.ref_name == matrix.env }}
+        env:
+          AUTH_KEY: ${{ secrets.JSPHERE_AUTH_KEY }}
+        run: |
+          js remote "${{ matrix.url }}/@cmd/loadproject?projectName=${{ env.PROJECT_NAME }}" "${AUTH_KEY}"
