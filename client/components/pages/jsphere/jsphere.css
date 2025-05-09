@@ -44,14 +44,26 @@
     transform-origin: center;
     border-radius: 50%;
     box-shadow: 
-        0 0 10px 2px rgba(255, 255, 255, 0.8),
-        0 0 20px 4px rgba(255, 255, 255, 0.4);
+        0 0 15px 3px rgba(255, 255, 255, 0.9),
+        0 0 25px 5px rgba(255, 255, 255, 0.5);
     filter: 
-        drop-shadow(0 0 15px var(--main-blue))
-        drop-shadow(0 0 15px var(--main-green))
-        drop-shadow(0 0 15px var(--main-red));
-    will-change: transform;
-    transition: transform 0.05s linear;
+        drop-shadow(0 0 20px var(--main-blue))
+        drop-shadow(0 0 20px var(--main-green))
+        drop-shadow(0 0 20px var(--main-red));
+    will-change: transform, opacity, filter;
+    transition: 
+        transform 0.05s linear,
+        opacity 0.1s linear,
+        filter 0.1s linear;
+    opacity: 0.9;
+}
+
+.cursor-trail:hover {
+    opacity: 1;
+    filter: 
+        drop-shadow(0 0 25px var(--main-blue))
+        drop-shadow(0 0 25px var(--main-green))
+        drop-shadow(0 0 25px var(--main-red));
 }
 
 .jsphere_body {
@@ -82,8 +94,8 @@
     position: absolute;
     width: 200%;
     height: 200%;
-    background-image: url('../../../assets/images/JSphere_bg.png');
-    background-size: 100% 100%;
+    background-image: url('../../../assets/images/jsphere_page_bg_full_sphere.png');
+    background-size: contain;
     background-position: center bottom;
     background-repeat: no-repeat;
     transform-origin: center center;
@@ -198,7 +210,7 @@
 
 .offering_points {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr;
     gap: 2rem;
     margin-top: 3rem;
 }
@@ -222,7 +234,7 @@
 
 .point_item i {
     font-size: 2rem;
-    color: var(--main-green);
+    color: white;
     margin-bottom: 1rem;
 }
 
@@ -238,6 +250,113 @@
     font-size: 1.1rem;
     line-height: 1.4;
     color: rgba(255, 255, 255, 0.8);
+}
+
+/* Expandable content styles */
+.point_item.expandable {
+    position: relative;
+    overflow: hidden;
+}
+
+.content-preview {
+    width: 100%;
+}
+
+.content-full {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-out;
+    width: 100%;
+}
+
+.point_item.expanded .content-full {
+    max-height: 1000px;
+    transition: max-height 0.5s ease-in;
+}
+
+.expand-btn {
+    margin-top: 1rem;
+}
+
+/* Content styles */
+.content-preview {
+    display: block;
+}
+
+.point_item.expanded .content-preview {
+    display: none;
+}
+
+.content-full {
+    display: none;
+    margin-top: 0;
+}
+
+.point_item.expanded .content-full {
+    display: block;
+    margin-top: 1rem;
+}
+
+/* Video placeholder styles */
+.video-placeholder {
+    width: 100%;
+    margin-top: 0;
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: 
+        all 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+        transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.point_item.expanded .video-placeholder {
+    max-height: 200px;
+    margin-top: 1.5rem;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.video-container {
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    height: 180px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.video-container i {
+    font-size: 3rem;
+    color: var(--main-green);
+    opacity: 0.8;
+    transition: all 0.3s ease;
+}
+
+.video-container:hover i {
+    transform: scale(1.1);
+    opacity: 1;
+}
+
+.video-container p {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.9rem;
+}
+
+/* Deno section styles */
+.deno-section {
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.deno-section p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin: 0;
 }
 
 /* Adjust licensing section to use 2 columns */
@@ -526,7 +645,7 @@
     }
 
     .offering_points {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr;
     }
 
     .section_heading {
@@ -560,8 +679,8 @@
         font-size: 5rem;
     }
 
-    .hero_background{
-        width: 300%;
+    .hero_background {
+        width: 100%;
     }
 
     .hero_introduction p {
@@ -624,8 +743,8 @@
         font-size: 1.4rem;
     }
 
-    .hero_background{
-        width: 400%;
+    .hero_background {
+        width: 100%;
     }
 
     .hero_jsphere {
