@@ -1,3 +1,7 @@
+body {
+    background-color: red;
+}
+
 .page-overlay {
     position: fixed;
     top: 0;
