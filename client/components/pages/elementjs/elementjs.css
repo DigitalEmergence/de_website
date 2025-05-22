@@ -83,7 +83,7 @@
     position: absolute;
     width: 300%;
     height: 300%;
-    background-image: url('../../../assets/images/elementjs_bg_4k-min.png');
+    background-image: url('https://storage.cloud.google.com/de_website/images/elementjs_bg-min.png');
     background-size: 100% 100%;
     background-position: center bottom;
     background-repeat: no-repeat;
@@ -92,6 +92,7 @@
         spaceRotate 60s linear infinite,
         hueShift 20s linear infinite;
     z-index: -1;
+    opacity: 0.5;
 }
 
 @keyframes spaceRotate {

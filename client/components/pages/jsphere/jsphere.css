@@ -94,15 +94,17 @@
     position: absolute;
     width: 200%;
     height: 200%;
-    background-image: url('../../../assets/images/jsphere_page_bg_full_sphere.png');
+    aspect-ratio: 1 / 1;
+    background-image: url('https://storage.cloud.google.com/de_website/images/jsphere_page_bg_full_sphere.png');
     background-size: contain;
-    background-position: center bottom;
+    background-position: center center;
     background-repeat: no-repeat;
     transform-origin: center center;
     animation: 
         spaceRotate 60s linear infinite,
         hueShift 20s linear infinite;
     z-index: -1;
+    opacity: 0.5;
 }
 
 @keyframes spaceRotate {
@@ -110,13 +112,13 @@
         transform: rotate(0deg) translate(0, 0);
     }
     25% {
-        transform: rotate(90deg) translate(2%, 2%);
+        transform: rotate(90deg) translate(10%, 10%);
     }
     50% {
         transform: rotate(180deg) translate(0, 0);
     }
     75% {
-        transform: rotate(270deg) translate(-2%, -2%);
+        transform: rotate(270deg) translate(-10%, -10%);
     }
     100% {
         transform: rotate(360deg) translate(0, 0);

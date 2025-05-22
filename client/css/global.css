@@ -1,10 +1,10 @@
 :root {
-    --main-green: #85A687;
-    --main-red: #CFA8A8;
-    --main-blue: #5760B4;
+    --main-green: #80DFB1;
+    --main-red: #FF9292;
+    --main-blue: #8592FF;
     --dark-gray: #626262;
     --light-gray: #C0C0C0;
-    --light-purple: #DACFE0;
+    --light-purple: #CD9FE6;
 }
 
 .color_shift {
@@ -103,6 +103,13 @@ h2 {
 h3 {
     font-size: 1.5rem;
     margin: 0;
+}
+
+p {
+    font-size: 1rem;
+    margin: 0;
+    line-height: 1.6;
+    letter-spacing: 0.05rem;
 }
 
 
